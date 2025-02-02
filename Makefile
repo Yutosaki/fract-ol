@@ -15,7 +15,7 @@ $(NAME): $(OBJ)
 	$(CC) $(OBJ) $(LIBX_FLAGS) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(INCLUeDES) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
