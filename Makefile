@@ -6,7 +6,9 @@ CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I./libmlx_linux
 LIBX_FLAGS = -L./libmlx_linux -lmlx -lXext -lX11 -lm -lz
 
-SRC = src/main.c
+SRC = src/main.c \
+	  src/fractol.c \
+
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
