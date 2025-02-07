@@ -1,18 +1,40 @@
 #include <mlx.h>
+#include <stdlib.h>
+#include "fractol.h"
 #include <stdio.h>
 
-int	main(void)
+int	handle_key(int keycode, void *param)
+{
+    (void)param;
+	printf("keycode: %d\n", keycode);
+	if (keycode == 65307) // 校舎のものだと違うかも？
+		exit(0);	
+	return (0);
+}
+
+int	handle_destroy(void *param)
+{
+	printf("destroy\n");
+	(void)param;
+	exit(0);
+	return (0);
+}
+
+int	main(int argc, char **argv)
 {
 	void	*mlx;
-	void	*mlx_win;
+	void	*win;
+
+    (void)argc;
+	(void)argv;
 
 	mlx = mlx_init();
-    if (mlx == NULL)
-    {
-        printf("error: mlx_init() failed\n");
-        return (1);
-    }
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-    (void)mlx_win;
+	win = mlx_new_window(mlx, WIDTH, HEIGHT, "fract-ol");
+
+	render_fractal(mlx, win, WIDTH, HEIGHT);
+
+	mlx_hook(win, 17, 1L<<17, handle_destroy, NULL);
+	mlx_key_hook(win, handle_key, NULL);
 	mlx_loop(mlx);
+	return (0);
 }
