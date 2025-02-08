@@ -4,6 +4,6 @@
 # define WIDTH 800
 # define HEIGHT 600
 
-void	render_fractal(void *mlx, void *win, int width, int height);
+void	render_fractal(void *mlx, void *win);
 
 #endif // FRACTOL_H

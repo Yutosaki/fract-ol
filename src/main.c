@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, WIDTH, HEIGHT, "fract-ol");
 
-	render_fractal(mlx, win, WIDTH, HEIGHT);
+	render_fractal(mlx, win);
 
 	mlx_hook(win, 17, 1L<<17, handle_destroy, NULL);
 	mlx_key_hook(win, handle_key, NULL);
