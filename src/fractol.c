@@ -1,14 +1,27 @@
 #include "fractol.h"
 #include <mlx.h>
 #include <math.h>
+#include <stdlib.h>
+
+static void	put_pixel(char *data, int x, int y, int color, int size_line, int bpp)
+{
+	int index = y * size_line + x * (bpp / 8);
+	*(int *)(data + index) = color;
+}
 
 void render_fractal(void *mlx, void *win)
 {
-	int x, y;
-	int max_iter = 100;
-	double scale = 4.0;         // 描画範囲（実数部・虚数部）の幅
-	double offset_re = -2.0;      // 実数部のオフセット
-	double offset_im = -2.0;      // 虚数部のオフセット
+	void	*img;
+	char	*data;
+	int		bpp, size_line, endian;
+	int		x, y;
+	int		max_iter = 100;
+	double	scale = 4.0;
+	double	offset_re = -2.0;
+	double	offset_im = -2.0;
+
+	img = mlx_new_image(mlx, WIDTH, HEIGHT);
+	data = mlx_get_data_addr(img, &bpp, &size_line, &endian);
 
 	y = 0;
 	while (y < HEIGHT)
@@ -29,12 +42,15 @@ void render_fractal(void *mlx, void *win)
 			}
 			int color;
 			if (iter == max_iter)
-				color = 0x000000; // 黒：発散せず
+				color = 0x000000;
 			else
-				color = (iter * 0xFFFFFF) / max_iter; // 発散する場合、グレースケールで色を設定
-			mlx_pixel_put(mlx, win, x, y, color);
+				color = (iter * 0xFFFFFF) / max_iter;
+			put_pixel(data, x, y, color, size_line, bpp);
 			x++;
 		}
 		y++;
 	}
+
+	mlx_put_image_to_window(mlx, win, img, 0, 0);
+	mlx_destroy_image(mlx, img);
 }

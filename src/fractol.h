@@ -1,5 +1,5 @@
 #ifndef FRACTOL_H
-#define FRACTOL_H
+# define FRACTOL_H
 
 # define WIDTH 800
 # define HEIGHT 600
