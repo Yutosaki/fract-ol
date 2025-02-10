@@ -7,12 +7,11 @@
 
 int	handle_key(int keycode, void *param)
 {
-	t_env *env = (t_env *)param;
+	t_all *all = (t_all *)param;
+	(void)all;
 	printf("keycode: %d\n", keycode);
-	(void)env;
 	if (keycode == 65307) // ESCキー
 		exit(0);
-	// Zoom 機能などのキー処理を追加可能
 	return (0);
 }
 
@@ -30,52 +29,67 @@ static void	print_usage(char *prog)
 	exit(1);
 }
 
-void render_fractal(t_env *env, t_julia *julia)
+int	handle_mouse(int button, int x, int y, void *param)
 {
-	if (env->type == MANDELBROT)
-		render_mandelbrot(env);
-	else if (env->type == JULIA)
-		render_julia(env, julia);
+	t_all *all = (t_all *)param;
+	double old_scale = all->env.scale;
+	if (button == 4)
+		all->env.scale *= 0.9;
+	else if (button == 5)
+		all->env.scale *= 1.1; 
+	all->env.offset_re += (x * (old_scale - all->env.scale)) / WIDTH;
+	all->env.offset_im += (y * (old_scale - all->env.scale)) / HEIGHT;
+
+	render_fractal(all);
+	return (0);
+}
+
+void render_fractal(t_all *all)
+{
+    if (all->env.type == MANDELBROT)
+        render_mandelbrot(&all->env);
+    else if (all->env.type == JULIA)
+        render_julia(&all->env, &all->julia);
 }
 
 int	main(int argc, char **argv)
-{	
-	t_env	env;
-	t_julia	julia;
+{
+	t_all	all;
 
 	if (argc < 2 || argc > 4)
 		print_usage(argv[0]);
 	if (strcmp(argv[1], "mandelbrot") == 0)
-		env.type = MANDELBROT;
+		all.env.type = MANDELBROT;
 	else if (strcmp(argv[1], "julia") == 0)
 	{
-		env.type = JULIA;
+		all.env.type = JULIA;
 		if (argc == 4)
 		{
-			julia.c_re = atof(argv[2]);
-			julia.c_im = atof(argv[3]);
+			all.julia.c_re = atof(argv[2]);
+			all.julia.c_im = atof(argv[3]);
 		}
 		else
 		{
-			julia.c_re = -0.7;
-			julia.c_re = 0.27015;
+			all.julia.c_re = -0.7;
+			all.julia.c_im = 0.27015;
 		}
 	}
 	else
 		print_usage(argv[0]);
 
-	env.max_iter = 100;
-	env.scale = 4.0;
-	env.offset_re = -2.0;
-	env.offset_im = -2.0;
+	all.env.max_iter = 100;
+	all.env.scale = 4.0;
+	all.env.offset_re = -2.0;
+	all.env.offset_im = -2.0;
 
-	env.mlx = mlx_init();
-	env.win = mlx_new_window(env.mlx, WIDTH, HEIGHT, "fract-ol");
+	all.env.mlx = mlx_init();
+	all.env.win = mlx_new_window(all.env.mlx, WIDTH, HEIGHT, "fract-ol");
 
-	render_fractal(&env, &julia);
+	render_fractal(&all);
 
-	mlx_hook(env.win, 17, 1L<<17, handle_destroy, NULL);
-	mlx_key_hook(env.win, handle_key, NULL);
-	mlx_loop(env.mlx);
+	mlx_hook(all.env.win, 17, 1L<<17, handle_destroy, NULL);
+	mlx_key_hook(all.env.win, handle_key, &all);
+	mlx_mouse_hook(all.env.win, handle_mouse, &all);
+	mlx_loop(all.env.mlx);
 	return (0);
 }

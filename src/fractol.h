@@ -19,7 +19,6 @@ typedef struct s_env
 	double		scale;
 	double		offset_re;
 	double		offset_im;
-	// Zoom などの今後のレンダリングオプションも追加可能
 }				t_env;
 
 typedef struct s_julia
@@ -28,7 +27,13 @@ typedef struct s_julia
     double	c_im;
 }				t_julia;
 
-void	render_fractal(t_env *env, t_julia *julia);
+typedef struct s_all
+{
+	t_env	env;
+	t_julia	julia;
+}				t_all;
+
+void	render_fractal(t_all *env);
 void	render_mandelbrot(t_env *env);
 void	render_julia(t_env *env, t_julia *julia);
 
