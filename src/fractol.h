@@ -7,7 +7,8 @@
 typedef enum e_fractal
 {
 	MANDELBROT,
-	JULIA
+	JULIA,
+	BURNING_SHIP
 }				t_fractal;
 
 typedef struct s_env
@@ -19,6 +20,7 @@ typedef struct s_env
 	double		scale;
 	double		offset_re;
 	double		offset_im;
+	int			color_offset;
 }				t_env;
 
 typedef struct s_julia
@@ -33,8 +35,9 @@ typedef struct s_all
 	t_julia	julia;
 }				t_all;
 
-void	render_fractal(t_all *env);
+void	render_fractal(t_all *all);
 void	render_mandelbrot(t_env *env);
 void	render_julia(t_env *env, t_julia *julia);
+void	render_burning_ship(t_env *env);
 
 #endif // FRACTOL_H
