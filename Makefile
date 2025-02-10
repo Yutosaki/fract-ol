@@ -1,7 +1,7 @@
 NAME = fract-ol
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -O3
 
 INCLUDES = -I./libmlx_linux
 LIBX_FLAGS = -L./libmlx_linux -lmlx -lXext -lX11 -lm -lz
