@@ -10,19 +10,19 @@ int	handle_key(int keycode, void *param)
 	t_all *all = (t_all *)param;
 
 	printf("keycode: %d\n", keycode);
-	if (keycode == 65361) # left arrow
+	if (keycode == 65361) //left arrow
 		all->env.offset_re -= all->env.scale * 0.1;
-	else if (keycode == 65363) # right arrow
+	else if (keycode == 65363) //right arrow
 		all->env.offset_re += all->env.scale * 0.1;
-	else if (keycode == 65362) # up arrow
+	else if (keycode == 65362) // up arrow
 		all->env.offset_im -= all->env.scale * 0.1;
-	else if (keycode == 65364) # down arrow
+	else if (keycode == 65364) // down arrow
 		all->env.offset_im += all->env.scale * 0.1;
-	else if (keycode == 99)  # c
+	else if (keycode == 99)  // c
 		all->env.color_offset += 5000;
-	else if (keycode == 118) # v
+	else if (keycode == 118) // v
 		all->env.color_offset -= 5000;
-	else if (keycode == 65307) # esc
+	else if (keycode == 65307) // esc
 		exit(0);
 
 	render_fractal(all);
