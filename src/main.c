@@ -95,7 +95,6 @@ int	main(int argc, char **argv)
 	else
 		print_usage(argv[0]);
 
-	all.env.max_iter = 100;
 	all.env.scale = 4.0;
 	all.env.offset_re = -2.0;
 	all.env.offset_im = -2.0;

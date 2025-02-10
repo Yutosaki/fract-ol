@@ -3,6 +3,7 @@
 
 # define WIDTH 800
 # define HEIGHT 600
+# define MAX_ITER 100
 
 typedef enum e_fractal
 {
@@ -16,7 +17,6 @@ typedef struct s_env
 	void		*mlx;
 	void		*win;
 	t_fractal	type;
-	int			max_iter;
 	double		scale;
 	double		offset_re;
 	double		offset_im;

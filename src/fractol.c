@@ -32,17 +32,17 @@ void render_mandelbrot(t_env *env)
 			zx = 0;
 			zy = 0;
 			iter = 0;
-			while ((zx * zx + zy * zy) < 4 && iter < env->max_iter)
+			while ((zx * zx + zy * zy) < 4 && iter < MAX_ITER)
 			{
 				tmp = zx * zx - zy * zy + c_re;
 				zy = 2 * zx * zy + c_im;
 				zx = tmp;
 				iter++;
 			}
-			if (iter == env->max_iter)
+			if (iter == MAX_ITER)
 				color = 0x000000;
 			else
-				color = (((iter * 0xFFFFFF) / env->max_iter) + env->color_offset) & 0xFFFFFF;
+				color = (((iter * 0xFFFFFF) / MAX_ITER) + env->color_offset) & 0xFFFFFF;
 			put_pixel(data, x, y, color, size_line, bpp);
 			x++;
 		}
@@ -73,17 +73,17 @@ void render_julia(t_env *env, t_julia *julia)
 			zx = x * (env->scale / WIDTH) + env->offset_re;
 			zy = y * (env->scale / HEIGHT) + env->offset_im;
 			iter = 0;
-			while ((zx * zx + zy * zy) < 4 && iter < env->max_iter)
+			while ((zx * zx + zy * zy) < 4 && iter < MAX_ITER)
 			{
 				tmp = zx * zx - zy * zy + julia->c_re;
 				zy = 2 * zx * zy + julia->c_im;
 				zx = tmp;
 				iter++;
 			}
-			if (iter == env->max_iter)
+			if (iter == MAX_ITER)
 				color = 0x000000;
 			else
-				color = (((iter * 0xFFFFFF) / env->max_iter) + env->color_offset) & 0xFFFFFF;
+				color = (((iter * 0xFFFFFF) / MAX_ITER) + env->color_offset) & 0xFFFFFF;
 			put_pixel(data, x, y, color, size_line, bpp);
 			x++;
 		}
@@ -116,17 +116,17 @@ void render_burning_ship(t_env *env)
 			zx = 0;
 			zy = 0;
 			iter = 0;
-			while ((zx * zx + zy * zy) < 4 && iter < env->max_iter)
+			while ((zx * zx + zy * zy) < 4 && iter < MAX_ITER)
 			{
 				tmp = zx * zx - zy * zy + c_re;
 				zy = fabs(2 * zx * zy) + c_im;
 				zx = fabs(tmp);
 				iter++;
 			}
-			if (iter == env->max_iter)
+			if (iter == MAX_ITER)
 				color = 0x000000;
 			else
-				color = (((iter * 0xFFFFFF) / env->max_iter) + env->color_offset) & 0xFFFFFF;
+				color = (((iter * 0xFFFFFF) / MAX_ITER) + env->color_offset) & 0xFFFFFF;
 			put_pixel(data, x, y, color, size_line, bpp);
 			x++;
 		}
