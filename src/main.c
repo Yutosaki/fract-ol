@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ft_printf.h>
 
 int	handle_key(int keycode, void *param)
 {
@@ -38,7 +39,7 @@ int	handle_destroy(void *param)
 
 static void	print_usage(char *prog)
 {
-	printf("Usage: %s [mandelbrot | julia <julia_c_re> <julia_c_im> | burning_ship]\n", prog);
+	ft_printf("Usage: %s [mandelbrot | julia <julia_c_re> <julia_c_im> | burning_ship]\n", prog);
 	exit(1);
 }
 
@@ -105,12 +106,8 @@ int	main(int argc, char **argv)
 		}
 	}
 	else if (strcmp(argv[1], "burning_ship") == 0)
-	{
 		all.env.type = BURNING_SHIP;
-	}
 	else
 		print_usage(argv[0]);
-
 	set_env(&all);	
-	return (0);
 }
