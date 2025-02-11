@@ -77,8 +77,8 @@ void set_env(t_all *all)
 	all->env.win = mlx_new_window(all->env.mlx, WIDTH, HEIGHT, "fract-ol");
 	render_fractal(all);
 	mlx_hook(all->env.win, 17, 1L<<17, handle_destroy, NULL);
-	mlx_key_hook(all->env.win, handle_key, &all);
-	mlx_mouse_hook(all->env.win, handle_mouse, &all);
+	mlx_key_hook(all->env.win, handle_key, all);
+	mlx_mouse_hook(all->env.win, handle_mouse, all);
 	mlx_loop(all->env.mlx);
 }
 
