@@ -67,6 +67,21 @@ void render_fractal(t_all *all)
 		render_burning_ship(&all->env);
 }
 
+void set_env(t_all *all)
+{
+	all->env.scale = DEFAULT_SCALE;
+	all->env.offset_re = DEFAULT_OFFSET_RE;
+	all->env.offset_im = DEFAULT_OFFSET_IM;
+	all->env.color_offset = DEFAULT_COLOR_OFFSET;
+	all->env.mlx = mlx_init();
+	all->env.win = mlx_new_window(all->env.mlx, WIDTH, HEIGHT, "fract-ol");
+	render_fractal(all);
+	mlx_hook(all->env.win, 17, 1L<<17, handle_destroy, NULL);
+	mlx_key_hook(all->env.win, handle_key, &all);
+	mlx_mouse_hook(all->env.win, handle_mouse, &all);
+	mlx_loop(all->env.mlx);
+}
+
 int	main(int argc, char **argv)
 {
 	t_all	all;
@@ -96,19 +111,6 @@ int	main(int argc, char **argv)
 	else
 		print_usage(argv[0]);
 
-	all.env.scale = 4.0;
-	all.env.offset_re = -2.0;
-	all.env.offset_im = -2.0;
-	all.env.color_offset = 0;
-
-	all.env.mlx = mlx_init();
-	all.env.win = mlx_new_window(all.env.mlx, WIDTH, HEIGHT, "fract-ol");
-
-	render_fractal(&all);
-
-	mlx_hook(all.env.win, 17, 1L<<17, handle_destroy, NULL);
-	mlx_key_hook(all.env.win, handle_key, &all);
-	mlx_mouse_hook(all.env.win, handle_mouse, &all);
-	mlx_loop(all.env.mlx);
+	set_env(&all);	
 	return (0);
 }

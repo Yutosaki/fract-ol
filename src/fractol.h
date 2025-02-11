@@ -4,6 +4,10 @@
 # define WIDTH 800
 # define HEIGHT 600
 # define MAX_ITER 100
+# define DEFAULT_SCALE 4.0
+# define DEFAULT_OFFSET_RE -2.0
+# define DEFAULT_OFFSET_IM -2.0
+# define DEFAULT_COLOR_OFFSET 0
 
 typedef enum e_fractal
 {
