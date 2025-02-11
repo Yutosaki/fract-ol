@@ -10,7 +10,6 @@ int	handle_key(int keycode, void *param)
 {
 	t_all *all = (t_all *)param;
 
-	printf("keycode: %d\n", keycode);
 	if (keycode == 65361) //left arrow
 		all->env.offset_re -= all->env.scale * 0.1;
 	else if (keycode == 65363) //right arrow
@@ -83,21 +82,62 @@ void set_env(t_all *all)
 	mlx_loop(all->env.mlx);
 }
 
+int ft_strcmp(const char *s1, const char *s2)
+{
+	while (*s1 && *s2 && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+	}
+	return (*s1 - *s2);
+}
+
+double ft_atof(const char *str)
+{
+	double res = 0.0;
+	double sign = 1.0;
+	int i = 0;
+	if (str[i] == '-')
+	{
+		sign = -1.0;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = res * 10.0 + (str[i] - '0');
+		i++;
+	}
+	if (str[i] == '.')
+	{
+		double f = 0.0;
+		double d = 10.0;
+		i++;
+		while (str[i] >= '0' && str[i] <= '9')
+		{
+			f = f + (str[i] - '0') / d;
+			d *= 10.0;
+			i++;
+		}
+		res += f;
+	}
+	return (res * sign);
+}
+
 int	main(int argc, char **argv)
 {
 	t_all	all;
 
 	if (argc < 2 || argc > 4)
 		print_usage(argv[0]);
-	if (strcmp(argv[1], "mandelbrot") == 0)
+	if (ft_strcmp(argv[1], "mandelbrot") == 0)
 		all.env.type = MANDELBROT;
-	else if (strcmp(argv[1], "julia") == 0)
+	else if (ft_strcmp(argv[1], "julia") == 0)
 	{
 		all.env.type = JULIA;
 		if (argc == 4)
 		{
-			all.julia.c_re = atof(argv[2]);
-			all.julia.c_im = atof(argv[3]);
+			all.julia.c_re = ft_atof(argv[2]);
+			all.julia.c_im = ft_atof(argv[3]);
 		}
 		else
 		{
@@ -105,7 +145,7 @@ int	main(int argc, char **argv)
 			all.julia.c_im = 0.27015;
 		}
 	}
-	else if (strcmp(argv[1], "burning_ship") == 0)
+	else if (ft_strcmp(argv[1], "burning_ship") == 0)
 		all.env.type = BURNING_SHIP;
 	else
 		print_usage(argv[0]);

@@ -1,4 +1,5 @@
-*.o 
+*.o
 *.history
 fract-ol
 .vscode
+*.a
