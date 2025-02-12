@@ -2,8 +2,7 @@
 
 static void	print_usage(char *prog)
 {
-	ft_printf("Usage:
-		%s [mandelbrot | julia <julia_c_re> <julia_c_im> | burning_ship]\n",
+	ft_printf("Usage: %s [mandelbrot | julia <julia_c_re> <julia_c_im> | burning_ship]\n",
 		prog);
 	exit(1);
 }

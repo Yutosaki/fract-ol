@@ -17,7 +17,10 @@ SRC = src/main.c \
 
 OBJ = $(SRC:.c=.o)
 
-all: $(LIBFTPRINTF) $(NAME)
+submodules:
+	@git submodule update --init --recursive
+
+all: submodules $(LIBFTPRINTF) $(NAME)
 
 $(LIBFTPRINTF):
 	make -C ft_printf
@@ -38,4 +41,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re submodules
