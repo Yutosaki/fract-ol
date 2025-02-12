@@ -22,8 +22,7 @@ int	calc_burning_ship(double c_re, double c_im, t_env *env)
 	return ((((iter * 0xFFFFFF) / MAX_ITER) + env->color_offset) & 0xFFFFFF);
 }
 
-void	render_burning_ship_line(int y, t_env *env, char *data, int size_line,
-		int bpp)
+void	render_burning_ship_line(int y, t_env *env, t_img *img)
 {
 	t_point	p;
 	int		color;
@@ -37,20 +36,19 @@ void	render_burning_ship_line(int y, t_env *env, char *data, int size_line,
 		c_re = p.x * (env->scale / WIDTH) + env->offset_re;
 		c_im = p.y * (env->scale / HEIGHT) + env->offset_im;
 		color = calc_burning_ship(c_re, c_im, env);
-		put_pixel(data, p, color, size_line, bpp);
+		put_pixel(img, p, color);
 		p.x++;
 	}
 }
 
-void	render_burning_ship_lines(t_env *env, char *data, int size_line,
-		int bpp)
+void	render_burning_ship_lines(t_env *env, t_img *img)
 {
-	int y;
+	int	y;
 
 	y = 0;
 	while (y < HEIGHT)
 	{
-		render_burning_ship_line(y, env, data, size_line, bpp);
+		render_burning_ship_line(y, env, img);
 		y++;
 	}
 }

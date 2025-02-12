@@ -18,8 +18,7 @@ int	calc_julia(double zx, double zy, t_julia *julia, t_env *env)
 	return ((((iter * 0xFFFFFF) / MAX_ITER) + env->color_offset) & 0xFFFFFF);
 }
 
-void	render_julia_line(int y, t_env *env, t_julia *julia, char *data,
-		int size_line, int bpp)
+void	render_julia_line(int y, t_env *env, t_julia *julia, t_img *img)
 {
 	t_point	p;
 	int		color;
@@ -33,20 +32,19 @@ void	render_julia_line(int y, t_env *env, t_julia *julia, char *data,
 		zx = p.x * (env->scale / WIDTH) + env->offset_re;
 		zy = p.y * (env->scale / HEIGHT) + env->offset_im;
 		color = calc_julia(zx, zy, julia, env);
-		put_pixel(data, p, color, size_line, bpp);
+		put_pixel(img, p, color);
 		p.x++;
 	}
 }
 
-void	render_julia_lines(t_env *env, t_julia *julia, char *data,
-		int size_line, int bpp)
+void	render_julia_lines(t_env *env, t_julia *julia, t_img *img)
 {
-	int y;
+	int	y;
 
 	y = 0;
 	while (y < HEIGHT)
 	{
-		render_julia_line(y, env, julia, data, size_line, bpp);
+		render_julia_line(y, env, julia, img);
 		y++;
 	}
 }
