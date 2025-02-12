@@ -13,8 +13,7 @@ SRC = src/main.c \
 	  src/fractol.c \
 	  src/events.c \
 	  src/helper_mandelbrot.c \
-	  src/helper_julia.c \
-	  src/helper_burning_ship.c
+	  src/helper_julia.c 
 
 SRC_BONUS = src_bonus/main_bonus.c \
 			src_bonus/fractol_bonus.c \

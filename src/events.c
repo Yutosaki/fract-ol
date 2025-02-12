@@ -82,6 +82,4 @@ void	render_fractal(t_all *all)
 		render_mandelbrot(&all->env);
 	else if (all->env.type == JULIA)
 		render_julia(&all->env, &all->julia);
-	else if (all->env.type == BURNING_SHIP)
-		render_burning_ship(&all->env);
 }

@@ -14,8 +14,8 @@
 
 static void	print_usage(char *prog)
 {
-	ft_printf("Usage: %s [mandelbrot | julia <julia_c_re> <julia_c_im> |"
-		" burning_ship]\n", prog);
+	ft_printf("Usage: %s [mandelbrot | julia <julia_c_re> <julia_c_im>"
+		"\n", prog);
 	exit(1);
 }
 
@@ -96,8 +96,6 @@ int	main(int argc, char **argv)
 			all.julia.c_im = 0.27015;
 		}
 	}
-	else if (ft_strcmp(argv[1], "burning_ship") == 0)
-		all.env.type = BURNING_SHIP;
 	else
 		print_usage(argv[0]);
 	set_env(&all);

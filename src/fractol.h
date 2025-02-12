@@ -32,7 +32,6 @@ typedef enum e_fractal
 {
 	MANDELBROT,
 	JULIA,
-	BURNING_SHIP
 }				t_fractal;
 
 typedef struct s_env
@@ -89,10 +88,6 @@ int				calc_julia(double c_re, double c_im, t_julia *julia,
 void			render_julia_line(int y, t_env *env, t_julia *julia,
 					t_img *img);
 void			render_julia_lines(t_env *env, t_julia *julia, t_img *img);
-
-int				calc_burning_ship(double c_re, double c_im, t_env *env);
-void			render_burning_ship_line(int y, t_env *env, t_img *img);
-void			render_burning_ship_lines(t_env *env, t_img *img);
 
 void			put_pixel(t_img *img, t_point p, int color);
 
