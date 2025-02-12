@@ -53,9 +53,32 @@ typedef struct s_point
 }				t_point;
 
 void			set_env(t_all *all);
+
 void			render_mandelbrot(t_env *env);
 void			render_julia(t_env *env, t_julia *julia);
 void			render_burning_ship(t_env *env);
 void			render_fractal(t_all *all);
+
+int				calc_mandelbrot(double c_re, double c_im, t_env *env);
+void			render_mandelbrot_line(int y, t_env *env, char *data,
+					int size_line, int bpp);
+void			render_mandelbrot_lines(t_env *env, char *data, int size_line,
+					int bpp);
+
+int				calc_julia(double c_re, double c_im, t_julia *julia,
+					t_env *env);
+void			render_julia_line(int y, t_env *env, t_julia *julia, char *data,
+					int size_line, int bpp);
+void			render_julia_lines(t_env *env, t_julia *julia, char *data,
+					int size_line, int bpp);
+
+int				calc_burning_ship(double c_re, double c_im, t_env *env);
+void			render_burning_ship_line(int y, t_env *env, char *data,
+					int size_line, int bpp);
+void			render_burning_ship_lines(t_env *env, char *data, int size_line,
+					int bpp);
+
+void			put_pixel(char *data, t_point p, int color, int size_line,
+					int bpp);
 
 #endif // FRACTOL_H

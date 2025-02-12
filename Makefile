@@ -10,8 +10,10 @@ LIBFTPRINTF = ft_printf/libftprintf.a
 
 SRC = src/main.c \
 	  src/fractol.c \
-	  src/helper_fractol.c \
 	  src/events.c \
+	  src/helper_mandelbrot.c \
+	  src/helper_julia.c \
+	  src/helper_burning_ship.c
 
 OBJ = $(SRC:.c=.o)
 
