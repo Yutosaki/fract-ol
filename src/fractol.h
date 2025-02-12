@@ -18,7 +18,6 @@
 # include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <string.h>
 
 # define WIDTH 800
 # define HEIGHT 600
