@@ -64,3 +64,10 @@ void	render_mandelbrot_lines(t_env *env, t_img *img)
 		y++;
 	}
 }
+
+void	parse_mandelbrot_args(int argc, char **argv, t_all *all)
+{
+	if (argc != 2)
+		error_and_usage("mandelbrot does not accept extra arguments", argv[0]);
+	all->env.type = MANDELBROT;
+}

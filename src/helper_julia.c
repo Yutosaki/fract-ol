@@ -60,3 +60,22 @@ void	render_julia_lines(t_env *env, t_julia *julia, t_img *img)
 		y++;
 	}
 }
+
+void	parse_julia_args(int argc, char **argv, t_all *all)
+{
+	all->env.type = JULIA;
+	if (argc == 4)
+	{
+		validate_number(argv[2], "Invalid number for julia_c_re", argv[0]);
+		validate_number(argv[3], "Invalid number for julia_c_im", argv[0]);
+		all->julia.c_re = ft_atof(argv[2]);
+		all->julia.c_im = ft_atof(argv[3]);
+	}
+	else if (argc == 2)
+	{
+		all->julia.c_re = -0.7;
+		all->julia.c_im = 0.27015;
+	}
+	else
+		error_and_usage("julia requires 0 or 2 extra arguments", argv[0]);
+}

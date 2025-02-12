@@ -72,6 +72,15 @@ typedef struct s_img
 	int			endian;
 }				t_img;
 
+int				ft_strcmp(const char *s1, const char *s2);
+int				ft_isdigit(int c);
+void			validate_number(const char *s, const char *err_msg,
+					const char *prog);
+void			parse_arguments(int argc, char **argv, t_all *all);
+void			error_and_usage(const char *msg, const char *prog);
+double			ft_atof(const char *str);
+void			print_usage(const char *prog);
+
 void			set_env(t_all *all);
 
 void			render_mandelbrot(t_env *env);
@@ -82,12 +91,14 @@ void			render_fractal(t_all *all);
 int				calc_mandelbrot(double c_re, double c_im, t_env *env);
 void			render_mandelbrot_line(int y, t_env *env, t_img *img);
 void			render_mandelbrot_lines(t_env *env, t_img *img);
+void			parse_mandelbrot_args(int argc, char **argv, t_all *all);
 
 int				calc_julia(double c_re, double c_im, t_julia *julia,
 					t_env *env);
 void			render_julia_line(int y, t_env *env, t_julia *julia,
 					t_img *img);
 void			render_julia_lines(t_env *env, t_julia *julia, t_img *img);
+void			parse_julia_args(int argc, char **argv, t_all *all);
 
 void			put_pixel(t_img *img, t_point p, int color);
 
