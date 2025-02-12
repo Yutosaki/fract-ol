@@ -1,7 +1,4 @@
 #include "fractol.h"
-#include <mlx.h>
-#include <math.h>
-#include <stdlib.h>
 
 static void put_pixel(char* data, t_point p, int color, int size_line, int bpp)
 {
