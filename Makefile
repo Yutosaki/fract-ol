@@ -24,6 +24,7 @@ submodules:
 
 $(LIBFTPRINTF):
 	make -C ft_printf
+	make -C libmlx_linux
 
 $(NAME): $(OBJ) $(LIBFTPRINTF)
 	$(CC) $(OBJ) $(LIBX_FLAGS) -L./ft_printf -lftprintf -o $(NAME)
