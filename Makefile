@@ -27,21 +27,20 @@ SRC_BONUS = src_bonus/main_bonus.c \
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
-all: submodules $(LIBFTPRINTF) $(NAME)
-
-submodules:
-	@git submodule update --init --recursive
+all: $(LIBFTPRINTF) $(NAME)
 
 $(LIBFTPRINTF):
 	make -C ft_printf
 	make -C libmlx_linux
 
 $(NAME): $(OBJ) $(LIBFTPRINTF)
+	@git submodule update --init --recursive
 	$(CC) $(OBJ) $(LIBX_FLAGS) -L./ft_printf -lftprintf -o $(NAME)
 
-bonus: submodules $(LIBFTPRINTF) $(NAME_BONUS)
+bonus: $(LIBFTPRINTF) $(NAME_BONUS)
 
 $(NAME_BONUS): $(OBJ_BONUS) $(LIBFTPRINTF)
+	@git submodule update --init --recursive
 	$(CC) $(OBJ_BONUS) $(LIBX_FLAGS) -L./ft_printf -lftprintf -o $(NAME_BONUS)
 
 %.o: %.c
