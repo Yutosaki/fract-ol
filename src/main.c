@@ -1,10 +1,4 @@
-#include <mlx.h>
-#include <stdlib.h>
 #include "fractol.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <ft_printf.h>
 
 int handle_key(int keycode, void* param)
 {
