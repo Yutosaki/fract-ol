@@ -17,10 +17,10 @@ SRC = src/main.c \
 
 OBJ = $(SRC:.c=.o)
 
+all: submodules $(LIBFTPRINTF) $(NAME)
+
 submodules:
 	@git submodule update --init --recursive
-
-all: submodules $(LIBFTPRINTF) $(NAME)
 
 $(LIBFTPRINTF):
 	make -C ft_printf
