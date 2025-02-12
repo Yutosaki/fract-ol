@@ -52,23 +52,9 @@ typedef struct s_point
 	int	y;
 }				t_point;
 
-static void put_pixel(char* data, t_point p, int color, int size_line, int bpp);
-
-static int calc_mandelbrot(double c_re, double c_im, t_env* env);
-static void render_mandelbrot_line(int y, t_env* env, char* data, int size_line, int bpp);
-static void render_mandelbrot_lines(t_env* env, char* data, int size_line, int bpp);
 void	render_mandelbrot(t_env* env);
-
-static int calc_julia(double zx, double zy, t_julia* julia, t_env* env);
-static void render_julia_line(int y, t_env* env, t_julia* julia, char* data, int size_line, int bpp);
-static void render_julia_lines(t_env* env, t_julia* julia, char* data, int size_line, int bpp);
 void	render_julia(t_env* env, t_julia* julia);
-
-static int calc_burning_ship(double c_re, double c_im, t_env* env);
-static void render_burning_ship_line(int y, t_env* env, char* data, int size_line, int bpp);
-static void render_burning_ship_lines(t_env* env, char* data, int size_line, int bpp);
 void	render_burning_ship(t_env* env);
-
 void	render_fractal(t_all* all);
 
 
