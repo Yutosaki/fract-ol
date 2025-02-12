@@ -1,4 +1,5 @@
 NAME = fract-ol
+NAME_BONUS = fract-ol_bonus
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -O3
@@ -15,7 +16,15 @@ SRC = src/main.c \
 	  src/helper_julia.c \
 	  src/helper_burning_ship.c
 
+SRC_BONUS = src/main_bonus.c \
+			src/fractol_bonus.c \
+			src/events_bonus.c \
+			src/helper_mandelbrot_bonus.c \
+			src/helper_julia_bonus.c \
+			src/helper_burning_ship_bonus.c
+
 OBJ = $(SRC:.c=.o)
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 all: submodules $(LIBFTPRINTF) $(NAME)
 
@@ -29,17 +38,22 @@ $(LIBFTPRINTF):
 $(NAME): $(OBJ) $(LIBFTPRINTF)
 	$(CC) $(OBJ) $(LIBX_FLAGS) -L./ft_printf -lftprintf -o $(NAME)
 
+bonus: $(OBJ_BONUS) $(LIBFTPRINTF)
+	$(CC) $(OBJ_BONUS) $(LIBX_FLAGS) -L./ft_printf -lftprintf -o $(NAME_BONUS)
+
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
+	rm -f $(OBJ_BONUS)
 	make -C ft_printf clean
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(NAME_BONUS)
 	make -C ft_printf fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re submodules
+.PHONY: all clean fclean re submodules bonus
