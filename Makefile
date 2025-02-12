@@ -1,5 +1,5 @@
-NAME = fract-ol
-NAME_BONUS = fract-ol_bonus
+NAME = fractol
+NAME_BONUS = fractol_bonus
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -O3
