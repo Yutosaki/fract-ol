@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yutsasak <yutsasak@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:02:55 by yutsasak          #+#    #+#             */
-/*   Updated: 2025/02/12 17:02:56 by yutsasak         ###   ########.fr       */
+/*   Updated: 2025/02/12 22:43:35 by yutsasak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ double	ft_atof(const char *str)
 void	print_usage(const char *prog)
 {
 	ft_printf("Usage: %s [mandelbrot | julia <julia_c_re> <julia_c_im>] |"
-		" [burning_ship]\n", prog);
+				" [burning_ship]\n",
+				prog);
 	exit(1);
 }
 
