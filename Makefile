@@ -21,7 +21,8 @@ SRC_BONUS = src_bonus/main_bonus.c \
 			src_bonus/events_bonus.c \
 			src_bonus/helper_mandelbrot_bonus.c \
 			src_bonus/helper_julia_bonus.c \
-			src_bonus/helper_burning_ship_bonus.c
+			src_bonus/helper_burning_ship_bonus.c \
+			src_bonus/libft_bonus.c
 
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
@@ -38,7 +39,9 @@ $(LIBFTPRINTF):
 $(NAME): $(OBJ) $(LIBFTPRINTF)
 	$(CC) $(OBJ) $(LIBX_FLAGS) -L./ft_printf -lftprintf -o $(NAME)
 
-bonus: $(OBJ_BONUS) $(LIBFTPRINTF)
+bonus: submodules $(LIBFTPRINTF) $(NAME_BONUS)
+
+$(NAME_BONUS): $(OBJ_BONUS) $(LIBFTPRINTF)
 	$(CC) $(OBJ_BONUS) $(LIBX_FLAGS) -L./ft_printf -lftprintf -o $(NAME_BONUS)
 
 %.o: %.c

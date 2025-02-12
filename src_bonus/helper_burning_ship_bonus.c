@@ -64,3 +64,14 @@ void	render_burning_ship_lines(t_env *env, t_img *img)
 		y++;
 	}
 }
+
+void	parse_burning_ship_args(int argc, char **argv, t_all *all)
+{
+	if (argc != 2)
+		print_usage(argv[0]);
+	all->env.type = BURNING_SHIP;
+	all->env.scale = DEFAULT_SCALE;
+	all->env.offset_re = DEFAULT_OFFSET_RE;
+	all->env.offset_im = DEFAULT_OFFSET_IM;
+	all->env.color_offset = DEFAULT_COLOR_OFFSET;
+}

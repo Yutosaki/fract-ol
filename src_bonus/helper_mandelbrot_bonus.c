@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper_mandelbrot_bonus.c                          :+:      :+:    :+:   */
+/*   helper_mandelbrot.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yutsasak <yutsasak@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:02:52 by yutsasak          #+#    #+#             */
-/*   Updated: 2025/02/12 20:09:08 by yutsasak         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:02:53 by yutsasak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,11 @@ void	render_mandelbrot_lines(t_env *env, t_img *img)
 		render_mandelbrot_line(y, env, img);
 		y++;
 	}
+}
+
+void	parse_mandelbrot_args(int argc, char **argv, t_all *all)
+{
+	if (argc != 2)
+		error_and_usage("mandelbrot does not accept extra arguments", argv[0]);
+	all->env.type = MANDELBROT;
 }
