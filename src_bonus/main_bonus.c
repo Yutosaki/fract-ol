@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 static void	print_usage(char *prog)
 {
-	ft_printf("Usage: %s [mandelbrot | julia <julia_c_re> <julia_c_im> |\n"
-		"\tburning_ship]\n", prog);
+	ft_printf("Usage: %s [mandelbrot | julia <julia_c_re> <julia_c_im> |"
+		" burning_ship]\n", prog);
 	exit(1);
 }
 

@@ -16,12 +16,12 @@ SRC = src/main.c \
 	  src/helper_julia.c \
 	  src/helper_burning_ship.c
 
-SRC_BONUS = src/main_bonus.c \
-			src/fractol_bonus.c \
-			src/events_bonus.c \
-			src/helper_mandelbrot_bonus.c \
-			src/helper_julia_bonus.c \
-			src/helper_burning_ship_bonus.c
+SRC_BONUS = src_bonus/main_bonus.c \
+			src_bonus/fractol_bonus.c \
+			src_bonus/events_bonus.c \
+			src_bonus/helper_mandelbrot_bonus.c \
+			src_bonus/helper_julia_bonus.c \
+			src_bonus/helper_burning_ship_bonus.c
 
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)

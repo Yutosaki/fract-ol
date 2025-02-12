@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 int	calc_julia(double zx, double zy, t_julia *julia, t_env *env)
 {
