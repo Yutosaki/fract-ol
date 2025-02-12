@@ -52,6 +52,7 @@ typedef struct s_point
 	int			y;
 }				t_point;
 
+void			set_env(t_all *all);
 void			render_mandelbrot(t_env *env);
 void			render_julia(t_env *env, t_julia *julia);
 void			render_burning_ship(t_env *env);
