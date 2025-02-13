@@ -30,7 +30,8 @@ void	render_mandelbrot(t_env *env)
 		ft_printf("Error: mlx_new_image failed (mandelbrot)\n");
 		exit(1);
 	}
-	img.data = mlx_get_data_addr(img.img, &img.bpp, &img.size_line, &img.endian);
+	img.data = mlx_get_data_addr(img.img, &img.bpp, &img.size_line,
+			&img.endian);
 	if (!img.data)
 	{
 		mlx_destroy_image(env->mlx, img.img);
@@ -52,7 +53,8 @@ void	render_julia(t_env *env, t_julia *julia)
 		ft_printf("Error: mlx_new_image failed (julia)\n");
 		exit(1);
 	}
-	img.data = mlx_get_data_addr(img.img, &img.bpp, &img.size_line, &img.endian);
+	img.data = mlx_get_data_addr(img.img, &img.bpp, &img.size_line,
+			&img.endian);
 	if (!img.data)
 	{
 		mlx_destroy_image(env->mlx, img.img);
@@ -74,7 +76,8 @@ void	render_burning_ship(t_env *env)
 		ft_printf("Error: mlx_new_image failed (burning_ship)\n");
 		exit(1);
 	}
-	img.data = mlx_get_data_addr(img.img, &img.bpp, &img.size_line, &img.endian);
+	img.data = mlx_get_data_addr(img.img, &img.bpp, &img.size_line,
+			&img.endian);
 	if (!img.data)
 	{
 		mlx_destroy_image(env->mlx, img.img);
