@@ -1,5 +1,6 @@
 *.o
 *.history
-fract-ol
+fractol
+fractol_bonus
 .vscode
 *.a

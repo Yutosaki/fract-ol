@@ -68,7 +68,17 @@ void	set_env(t_all *all)
 	all->env.offset_im = DEFAULT_OFFSET_IM;
 	all->env.color_offset = DEFAULT_COLOR_OFFSET;
 	all->env.mlx = mlx_init();
+	if (!all->env.mlx)
+	{
+		ft_printf("Error: mlx_init failed\n");
+		exit(1);
+	}
 	all->env.win = mlx_new_window(all->env.mlx, WIDTH, HEIGHT, "fract-ol");
+	if (!all->env.win)
+	{
+		ft_printf("Error: mlx_new_window failed\n");
+		exit(1);
+	}
 	render_fractal(all);
 	mlx_hook(all->env.win, 17, 1L << 17, handle_destroy, NULL);
 	mlx_key_hook(all->env.win, handle_key, all);
